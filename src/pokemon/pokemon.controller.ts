@@ -5,10 +5,10 @@ import { PokemonService } from './pokemon.service';
 export class PokemonController {
   constructor(private readonly pokemonService: PokemonService) {}
 
-  // @Get('/add')
-  // addPokemon() {
-  //   return this.pokemonService.create();
-  // }
+  @Get('/add')
+  addPokemon() {
+    return this.pokemonService.create();
+  }
 
   @Get()
   findAll() {

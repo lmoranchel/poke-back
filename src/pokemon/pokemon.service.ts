@@ -8,7 +8,7 @@ export class PokemonService {
   constructor(@InjectModel(Pokemon.name) private pokemonModel: Model<Pokemon>) {}
 
   async create() {
-    for (let i = 900; i < 1026; i++) {
+    for (let i = 1; i < 1026; i++) {
       const pokemon = {
         id: 0,
         name: '',
@@ -36,13 +36,9 @@ export class PokemonService {
 
       pokemon.description = poke.flavor_text_entries.find((text) => text.language.name === 'en').flavor_text.replace(/\n|\f/g, ' ');
 
-      //console.log(pokemon.description);
-
-      //[0].flavor_text.replace(/\n|\f/g, ' ');
-
-      console.log(await this.pokemonModel.create(pokemon));
+      await this.pokemonModel.create(pokemon);
     }
-    return '';
+    return 'Pokemon added';
   }
 
   findAll(): Promise<Pokemon[]> {
